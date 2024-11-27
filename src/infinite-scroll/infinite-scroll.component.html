@@ -1,0 +1,24 @@
+<h1>Standalone</h1>
+
+<div class="h-[600px] relative bg-gray-200 overflow-y-auto border-blue-500 border-2 border-solid p-[10px]"  (scroll)="handleScroll($event)">
+    @if (items() && items().length > 0) {
+        <div *ngFor="let item of items()" class="flex-1">
+            <div class="bg-yellow-50 p-5 border-2 border-gray-500">
+                {{item?.title}}
+            </div>
+             
+        </div>
+    }
+    @else if (isLoading()) {
+        <div class="flex items-center justify-center h-screen">
+            <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
+          </div>
+          
+    }
+    @else if (!isLoading() && allDataLoaded()) {
+       <div class="text-center bg-blue-800 font-bold">
+        No more data to be loaded.
+       </div>
+     
+    }
+</div>
